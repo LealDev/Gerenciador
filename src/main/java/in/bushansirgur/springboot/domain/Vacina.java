@@ -1,4 +1,4 @@
-package in.bushansirgur.springboot.entity;
+package in.bushansirgur.springboot.domain;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -12,6 +12,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -25,37 +28,36 @@ import lombok.ToString;
 public class Vacina implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	String pattern;
-	SimpleDateFormat sdf = new SimpleDateFormat(pattern = "MM-dd-yyyy");
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	private String vacina;
-	private String date;
+	
+	private String dataAplicacao;
 
-	@ManyToOne()
+	
+	@ManyToOne
 	@JoinColumn(name = "animal_id", nullable = true)
 	private Animal animal;
 
 	public Vacina() {
 	}
 
-	public Vacina(String date, Integer id, String vacina, Animal animal) {
+	public Vacina(Integer id, String dataAplicacao, String vacina, Animal animal) {
 		super();
-		this.date = sdf.format(date);
+		this.dataAplicacao = dataAplicacao;
 		this.id = id;
 		this.vacina = vacina;
 		this.animal = animal;
 	}
 
-	public String getDate() {
-		return date;
+	public String getDataAplicacao() {
+		return dataAplicacao;
 	}
 
 	public void setDate(String date) {
-		this.date = date;
+		this.dataAplicacao = date;
 	}
 
 	public Integer getId() {

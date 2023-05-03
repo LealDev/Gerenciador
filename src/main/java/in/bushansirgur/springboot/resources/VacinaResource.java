@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.bushansirgur.springboot.entity.Vacina;
+import in.bushansirgur.springboot.domain.Vacina;
 import in.bushansirgur.springboot.services.VacinaService;
 
 @RestController
@@ -20,7 +20,7 @@ public class VacinaResource {
 	VacinaService service;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-		public ResponseEntity<?> find(@PathVariable Integer id){
+	public ResponseEntity<?> find(@PathVariable Integer id){
 		Vacina obj = service.find(id);
 			return ResponseEntity.ok().body(obj);
 		

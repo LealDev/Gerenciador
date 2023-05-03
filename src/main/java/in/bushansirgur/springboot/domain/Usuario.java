@@ -1,4 +1,4 @@
-package in.bushansirgur.springboot.entity;
+package in.bushansirgur.springboot.domain;
 
 import java.io.Serializable;
 

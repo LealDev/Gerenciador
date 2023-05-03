@@ -1,25 +1,22 @@
-package in.bushansirgur.springboot.entity;
+package in.bushansirgur.springboot.domain;
 
 import java.io.Serializable;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.springframework.lang.Nullable;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
 @Entity
 @Table(name = "raca")
-@Setter
-@Getter
-@ToString
+
 public class Raca implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -30,12 +27,15 @@ public class Raca implements Serializable {
 
 	@Nullable
 	private String raca;
+	
+	@OneToOne(cascade = { CascadeType.DETACH})
+	@JoinColumn(name = "animal_id")
+	private Animal animal;
 
 	public Raca() {
 		super();
 	}
-
-
+	
 	public Raca(Long id, String raca) {
 		super();
 		this.id = id;

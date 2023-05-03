@@ -1,4 +1,4 @@
-package in.bushansirgur.springboot.entity;
+package in.bushansirgur.springboot.domain;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
@@ -7,24 +7,17 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.springframework.lang.Nullable;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import in.bushansirgur.springboot.enumerators.TipoAnimal;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -38,45 +31,32 @@ public class Animal implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@Transient
 	String pattern;
-	SimpleDateFormat sdf = new SimpleDateFormat(pattern = "MM-dd-yyyy");
+	@Transient
+	SimpleDateFormat sdf = new SimpleDateFormat(pattern = "dd-MM-yyyy");
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	
-	@Nullable
+	private Integer id;
 	private String dataNascimento;
-	@Nullable
 	private String brinco;
-	@Nullable
 	private String nome;
-	@Nullable
 	private Character sexo;
-	@Nullable
-	private Animal pai;
-	@Nullable
-	private Animal mae;
-
-	 @OneToOne(fetch = FetchType.LAZY)
-	 @JoinColumn(name = "raca_id")
-	 @Nullable
-	 private Raca raca;
-
-	@Enumerated(value = EnumType.STRING)
-	@Nullable
-	private TipoAnimal tipoAnimal;
+	private String pai;
+	private String mae;
+	private String raca;
+	private String tipoAnimal;
 
 	@OneToMany(mappedBy = "animal")
-	@Nullable
 	List<Vacina> vacina = new ArrayList<>();
 
 	public Animal() {
 		super();
 	}
 
-	public Animal(Long id, String dataNascimento, String brinco, String nome, Character sexo, Animal pai, Animal mae,
-			Raca raca, TipoAnimal tipoAnimal, List<Vacina> vacina) {
+	public Animal(Integer id, String dataNascimento, String brinco, String nome, Character sexo, String pai, String mae,
+			String raca, String tipoAnimal) {
 		super();
 		this.id = id;
 		this.dataNascimento = dataNascimento;
@@ -87,39 +67,52 @@ public class Animal implements Serializable {
 		this.mae = mae;
 		this.raca = raca;
 		this.tipoAnimal = tipoAnimal;
-		this.vacina = vacina;
 	}
 
-	public TipoAnimal getTipoAnimal() {
-		return tipoAnimal;
+	public Animal(Integer id, String nome) {
+		super();
+		this.id = id;
+		this.nome = nome;
 	}
 
-	public void setTipoAnimal(TipoAnimal tipoAnimal) {
-		this.tipoAnimal = tipoAnimal;
+	public String getDataNascimento() {
+		return dataNascimento;
 	}
 
-	public Raca getRaca() {
-		return raca;
+	public void setDataNascimento(String dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 
-	public void setRaca(Raca raca) {
-		this.raca = raca;
-	}
-
-	public Animal getPai() {
+	public String getPai() {
 		return pai;
 	}
 
-	public void setPai(Animal pai) {
+	public void setPai(String pai) {
 		this.pai = pai;
 	}
 
-	public Animal getMae() {
+	public String getMae() {
 		return mae;
 	}
 
-	public void setMae(Animal mae) {
+	public void setMae(String mae) {
 		this.mae = mae;
+	}
+
+	public String getRaca() {
+		return raca;
+	}
+
+	public void setRaca(String raca) {
+		this.raca = raca;
+	}
+
+	public String getTipoAnimal() {
+		return tipoAnimal;
+	}
+
+	public void setTipoAnimal(String tipoAnimal) {
+		this.tipoAnimal = tipoAnimal;
 	}
 
 	public String getDate() {
@@ -139,11 +132,11 @@ public class Animal implements Serializable {
 		this.vacina = vacina;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

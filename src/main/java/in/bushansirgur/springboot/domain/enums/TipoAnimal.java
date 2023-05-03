@@ -1,4 +1,4 @@
-package in.bushansirgur.springboot.enumerators;
+package in.bushansirgur.springboot.domain.enums;
 
 public enum TipoAnimal {
 	
