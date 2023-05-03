@@ -16,37 +16,27 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import in.bushansirgur.springboot.domain.enums.TipoAnimal;
 
 @Entity
 @Table(name = "animal")
-@Setter
-@Getter
-@ToString
+
 public class Animal implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Transient
-	String pattern;
-	@Transient
-	SimpleDateFormat sdf = new SimpleDateFormat(pattern = "dd-MM-yyyy");
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String dataNascimento;
+	private Date dataNascimento;
 	private String brinco;
 	private String nome;
 	private Character sexo;
 	private String pai;
 	private String mae;
 	private String raca;
-	private String tipoAnimal;
+	private Integer tipoAnimal;
 
 	@OneToMany(mappedBy = "animal")
 	List<Vacina> vacina = new ArrayList<>();
@@ -55,9 +45,8 @@ public class Animal implements Serializable {
 		super();
 	}
 
-	public Animal(Integer id, String dataNascimento, String brinco, String nome, Character sexo, String pai, String mae,
-			String raca, String tipoAnimal) {
-		super();
+	public Animal(Integer id, Date dataNascimento, String brinco, String nome, Character sexo, String pai, String mae,
+			String raca, TipoAnimal tipoAnimal) {
 		this.id = id;
 		this.dataNascimento = dataNascimento;
 		this.brinco = brinco;
@@ -66,7 +55,7 @@ public class Animal implements Serializable {
 		this.pai = pai;
 		this.mae = mae;
 		this.raca = raca;
-		this.tipoAnimal = tipoAnimal;
+		this.tipoAnimal = tipoAnimal.getCod();
 	}
 
 	public Animal(Integer id, String nome) {
@@ -75,11 +64,11 @@ public class Animal implements Serializable {
 		this.nome = nome;
 	}
 
-	public String getDataNascimento() {
+	public Date getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(String dataNascimento) {
+	public void setDataNascimento(Date dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
@@ -107,21 +96,14 @@ public class Animal implements Serializable {
 		this.raca = raca;
 	}
 
-	public String getTipoAnimal() {
-		return tipoAnimal;
+	public TipoAnimal getTipoAnimal() {
+		return TipoAnimal.toEnum(tipoAnimal);
 	}
 
-	public void setTipoAnimal(String tipoAnimal) {
-		this.tipoAnimal = tipoAnimal;
+	public void setTipoAnimal(TipoAnimal tipoAnimal) {
+		this.tipoAnimal = tipoAnimal.getCod();
 	}
 
-	public String getDate() {
-		return dataNascimento;
-	}
-
-	public void setDate(String dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
 
 	@JsonIgnore
 	public List<Vacina> getVacina() {

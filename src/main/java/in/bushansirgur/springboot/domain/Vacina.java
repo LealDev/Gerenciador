@@ -1,7 +1,6 @@
 package in.bushansirgur.springboot.domain;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
@@ -12,19 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 @Table(name = "vacina")
-@Setter
-@Getter
-@ToString
+
 public class Vacina implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -34,7 +24,7 @@ public class Vacina implements Serializable {
 
 	private String vacina;
 	
-	private String dataAplicacao;
+	private Date dataAplicacao;
 
 	
 	@ManyToOne
@@ -44,19 +34,18 @@ public class Vacina implements Serializable {
 	public Vacina() {
 	}
 
-	public Vacina(Integer id, String dataAplicacao, String vacina, Animal animal) {
-		super();
+	public Vacina(Integer id, Date dataAplicacao, String vacina, Animal animal) {
 		this.dataAplicacao = dataAplicacao;
 		this.id = id;
 		this.vacina = vacina;
 		this.animal = animal;
 	}
 
-	public String getDataAplicacao() {
+	public Date getDataAplicacao() {
 		return dataAplicacao;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.dataAplicacao = date;
 	}
 

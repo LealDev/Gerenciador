@@ -10,22 +10,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 @Table(name = "usuario")
-@Setter
-@Getter
-@ToString
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 
 	
 	private String email, senha;
@@ -34,18 +28,18 @@ public class Usuario implements Serializable {
 		super();
 	}
 
-	public Usuario(Long id, String email, String senha) {
+	public Usuario(Integer id, String email, String senha) {
 		super();
 		this.id = id;
 		this.email = email;
 		this.senha = senha;
 	}
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

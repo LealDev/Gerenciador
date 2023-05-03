@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import in.bushansirgur.springboot.domain.Animal;
 
 @Repository
-public interface IAnimalRepo extends JpaRepository<Animal, Long> {
+public interface AnimalRepository extends JpaRepository<Animal, Integer> {
 
 	Object save(Long id);
 

@@ -7,19 +7,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import in.bushansirgur.springboot.domain.Vacina;
-import in.bushansirgur.springboot.services.VacinaService;
+import in.bushansirgur.springboot.domain.Animal;
+import in.bushansirgur.springboot.services.AnimalService;
 
 @RestController
-@RequestMapping(value = "/vacinas")
-public class VacinaResource {
+@RequestMapping(value = "/animais")
+public class AnimalResource {
 	
 	@Autowired
-	VacinaService service;
+	AnimalService service;
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> find(@PathVariable Integer id){
-		Vacina obj = service.find(id);
+		Animal obj = service.find(id);
 			return ResponseEntity.ok().body(obj);
 		
 	}

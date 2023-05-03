@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import in.bushansirgur.springboot.domain.Usuario;
 
 @Repository
-public interface IUsuarioRepo extends JpaRepository<Usuario, Long> {
+public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
 
 }
