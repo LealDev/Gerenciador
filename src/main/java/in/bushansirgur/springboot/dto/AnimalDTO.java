@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 import in.bushansirgur.springboot.domain.Animal;
+import in.bushansirgur.springboot.domain.enums.TipoAnimal;
+
 
 public class AnimalDTO implements Serializable {
 
@@ -101,8 +103,8 @@ public class AnimalDTO implements Serializable {
 		this.raca = raca;
 	}
 
-	public Integer getTipoAnimal() {
-		return tipoAnimal;
+	public TipoAnimal getTipoAnimal() {
+		return TipoAnimal.toEnum(tipoAnimal);
 	}
 
 	public void setTipoAnimal(Integer tipoAnimal) {
