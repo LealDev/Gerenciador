@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "vacina")
 
@@ -56,7 +58,8 @@ public class Vacina implements Serializable {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-
+	
+	@JsonIgnore
 	public Animal getAnimal() {
 		return animal;
 	}

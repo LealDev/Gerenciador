@@ -105,7 +105,6 @@ public class Animal implements Serializable {
 	}
 
 
-	@JsonIgnore
 	public List<Vacina> getVacina() {
 		return vacina;
 	}

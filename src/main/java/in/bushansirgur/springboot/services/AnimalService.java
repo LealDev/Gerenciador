@@ -1,5 +1,6 @@
 package in.bushansirgur.springboot.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,8 @@ public class AnimalService {
 		repo.deleteById(id);
 	}
 	
+	public List<Animal> findAll(){
+		return repo.findAll();
+	}
 	
 }

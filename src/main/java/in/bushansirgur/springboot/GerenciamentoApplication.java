@@ -35,8 +35,9 @@ public class GerenciamentoApplication implements CommandLineRunner {
 		Animal animal1 = new Animal(null, sdf.parse("01/11/1986 10:32"),"Gegex15","general",'M',"General","mimosa","karacu",TipoAnimal.BOVINO);
 		Animal animal2 = new Animal(null, sdf.parse("01/11/1976 10:32"),"Gegex15","general",'M',"cavalo","karina","karacu",TipoAnimal.BOVINO);
 		
-		Vacina vac1 = new Vacina(null, sdf.parse("01/11/1986 10:32"), "astrazeneca", new Animal(2, "General"));
-		Vacina vac2 = new Vacina(null, sdf.parse("01/11/1986 10:32"), "astrazeneca", new Animal(3, "Mimosa"));
+		Vacina vac1 = new Vacina(null, sdf.parse("01/11/1986 10:32"), "vacina1", new Animal(3, "General"));
+		Vacina vac2 = new Vacina(null, sdf.parse("01/11/1986 10:33"), "vacina2", new Animal(3, "Mimosa"));
+		Vacina vac3 = new Vacina(null, sdf.parse("01/11/1986 10:34"), "vacina3", new Animal(3, "Mimosa"));
 		
 		animal1.getVacina().addAll(Arrays.asList(vac1,vac2));
 		animal2.getVacina().addAll(Arrays.asList(vac2,vac1));

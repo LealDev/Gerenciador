@@ -1,7 +1,10 @@
 package in.bushansirgur.springboot.resources;
 
 import java.net.URI;
+import java.util.List;
+import java.util.stream.Collectors;
 
+import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import in.bushansirgur.springboot.domain.Animal;
+import in.bushansirgur.springboot.dto.AnimalDTO;
 import in.bushansirgur.springboot.services.AnimalService;
 
 @RestController
@@ -45,7 +49,13 @@ public class AnimalResource {
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
-		
+	}
+	
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity<List<AnimalDTO>> findAll(){
+		List<Animal> list = service.findAll();
+		List<AnimalDTO> listDTO = list.stream().map(obj -> new AnimalDTO(obj)).collect(Collectors.toList());
+			return ResponseEntity.ok().body(listDTO);
 	}
 	
 }
