@@ -20,5 +20,16 @@ public class AnimalService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado!" + id + ", Tipo " + Animal.class.getName()));
 	}
-			
+	
+	public Animal insert (Animal obj) {
+		obj.setId(null);
+		return repo.save(obj);
+	}
+	
+	public Animal update(Animal obj) {
+		find(obj.getId());
+		return repo.save(obj);
+	}
+	
+	
 }
