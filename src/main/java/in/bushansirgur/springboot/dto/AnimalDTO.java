@@ -6,11 +6,10 @@ import java.util.Date;
 import in.bushansirgur.springboot.domain.Animal;
 import in.bushansirgur.springboot.domain.enums.TipoAnimal;
 
-
 public class AnimalDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Integer id;
 	private Date dataNascimento;
 	private String brinco;
@@ -20,11 +19,10 @@ public class AnimalDTO implements Serializable {
 	private String mae;
 	private String raca;
 	private Integer tipoAnimal;
-	
+
 	public AnimalDTO() {
 	}
-	
-	
+
 	public AnimalDTO(Animal obj) {
 		super();
 		this.id = obj.getId();
@@ -37,7 +35,6 @@ public class AnimalDTO implements Serializable {
 		this.raca = obj.getRaca();
 		this.tipoAnimal = obj.getTipoAnimal().getCod();
 	}
-
 
 	public Integer getId() {
 		return id;
@@ -110,6 +107,5 @@ public class AnimalDTO implements Serializable {
 	public void setTipoAnimal(Integer tipoAnimal) {
 		this.tipoAnimal = tipoAnimal;
 	}
-	
-	
-} 
+
+}

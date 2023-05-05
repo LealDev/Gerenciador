@@ -37,8 +37,8 @@ public class Vacina implements Serializable {
 	}
 
 	public Vacina(Integer id, Date dataAplicacao, String vacina, Animal animal) {
-		this.dataAplicacao = dataAplicacao;
 		this.id = id;
+		this.dataAplicacao = dataAplicacao;
 		this.vacina = vacina;
 		this.animal = animal;
 	}

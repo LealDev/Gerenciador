@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import in.bushansirgur.springboot.domain.Animal;
+import in.bushansirgur.springboot.dto.AnimalDTO;
 import in.bushansirgur.springboot.repositories.AnimalRepository;
 import in.bushansirgur.springboot.services.exceptions.ObjectNotFoundException;
 
@@ -47,6 +48,17 @@ public class AnimalService {
 	public Page<Animal> findPage(Integer page, Integer linesPerPage, String orderBy, String direction) {
 		PageRequest pageRequest = PageRequest.of(page, linesPerPage, Direction.valueOf(direction), orderBy);
 		return repo.findAll(pageRequest);
+	}
+	public Animal fromDTO(AnimalDTO objDto) {
+		return new Animal(objDto.getId(),
+				objDto.getDataNascimento(),
+				objDto.getBrinco(),
+				objDto.getNome(),
+				objDto.getSexo(),
+				objDto.getPai(),
+				objDto.getMae(),
+				objDto.getRaca(),
+				objDto.getTipoAnimal());
 	}
 	
 }
