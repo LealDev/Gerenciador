@@ -59,6 +59,14 @@ public class AnimalResource {
 			return ResponseEntity.ok().body(listDTO);
 	}
 	
+	@RequestMapping(value="/buscarPorNome", method = RequestMethod.GET)
+	public ResponseEntity<List<AnimalDTO>> findByName(@RequestParam(name ="nome") String nome ){
+		List<Animal> list = service.findByName(nome);
+		List<AnimalDTO> listDTO = list.stream().map(obj -> new AnimalDTO(obj)).collect(Collectors.toList());
+			return ResponseEntity.ok().body(listDTO);
+	}
+	
+	
 	@RequestMapping(value="/page", method=RequestMethod.GET)
 	public ResponseEntity<Page<AnimalDTO>> findPage(
 			@RequestParam(value="page", defaultValue="0") Integer page, 

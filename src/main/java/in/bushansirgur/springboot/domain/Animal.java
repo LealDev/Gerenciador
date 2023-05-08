@@ -33,11 +33,7 @@ public class Animal implements Serializable {
 	@Column(unique = true)
 	private String nome;
 	private Character sexo;
-	
-	@Column(unique = true)
 	private String pai;
-	
-	@Column(unique = true)
 	private String mae;
 	private String raca;
 	private Integer tipoAnimal;

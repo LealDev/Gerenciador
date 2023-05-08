@@ -2,6 +2,8 @@ package in.bushansirgur.springboot.dto;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import in.bushansirgur.springboot.domain.Animal;
 import in.bushansirgur.springboot.domain.Vacina;
 
@@ -26,7 +28,8 @@ public class VacinaDTO {
 	public Integer getId() {
 		return id;
 	}
-
+	
+	@JsonIgnore
 	public Animal getAnimal() {
 		return animal;
 	}

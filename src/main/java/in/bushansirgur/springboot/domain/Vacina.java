@@ -43,6 +43,7 @@ public class Vacina implements Serializable {
 		this.animal = animal;
 	}
 
+
 	public Date getDataAplicacao() {
 		return dataAplicacao;
 	}
